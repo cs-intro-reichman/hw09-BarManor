@@ -46,11 +46,18 @@ public class List {
     
     /** GIVE Textual representation of this list. */
     public String toString() {
-        String res ="";
-        for (Node current = first; current != null; current = current.next) {
-           res = res + current.cp.toString() + " ";
+
+    String res = "(";
+
+    for (Node current = first; current != null; current = current.next) {
+        res = res + current.cp.toString();
+        if (current.next != null) {
+             res = res + " ";
         }
-        return res;
+    }
+
+    return res + ")";
+
     }
 
     /** Returns the index of the first CharData object in this list
@@ -62,7 +69,7 @@ public class List {
         int index = 0;  
 
         while (current != null) {
-            if (current.cp.chr == chr && current.cp != null) {
+            if (current.cp.chr == chr) {
                 return index;
             }
             current = current.next;
