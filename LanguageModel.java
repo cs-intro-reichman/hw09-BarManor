@@ -123,37 +123,27 @@ public class LanguageModel {
      * @return the generated text
      */
     public String generate(String initialText, int textLength) {
-        // If the initial text is too short, we cannot generate anything
-        if (initialText.length() < windowLength) {
-            return initialText;
-        }
-
-        // Initialize window with the last windowLength characters of the initial text
-        String window = initialText.substring(initialText.length() - windowLength);
-        String generatedText = initialText;
-
-        // Generate characters until we reach the desired length
-        while (generatedText.length() < textLength) {
-            // Get the list of probable characters for the current window
-            List probs = CharDataMap.get(window);
-            
-            // If the pattern is unknown, stop generating
-            if (probs == null) {
-                break;
-            }
-
-            // Get a random character based on the probabilities
-            char c = getRandomChar(probs);
-            
-            // Append the character to the text
-            generatedText += c;
-            
-            // Slide the window
-            window = generatedText.substring(generatedText.length() - windowLength);
-        }
-        
-        return generatedText;
+    if (initialText.length() < windowLength) {
+        return initialText;
     }
+    
+    String window = initialText.substring(initialText.length() - windowLength);
+    String generatedText = initialText;
+
+    
+    // We want to generate 'textLength' more characters, so we stop when
+    // total length equals initialText.length() + textLength.
+    while (generatedText.length() < initialText.length() + textLength) {
+        List probs = CharDataMap.get(window);
+        if (probs == null) {
+            break;
+        }
+        char c = getRandomChar(probs);
+        generatedText += c;
+        window = generatedText.substring(generatedText.length() - windowLength);
+    }
+    return generatedText;
+}
 
     /** Returns a string representing the map of this language model. */
     public String toString() {
