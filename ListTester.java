@@ -3,6 +3,7 @@ import java.util.LinkedList;
 
 public class ListTester {
     public static void main(String[] args) {
+
         String methodName = args[0];
         boolean result = false;
         switch (methodName) {
@@ -36,6 +37,7 @@ public class ListTester {
             default:
                 break;
         }
+
         System.out.println("Test " + methodName + " result: " + (result ? "PASSED" : "FAILED"));
     }
 
