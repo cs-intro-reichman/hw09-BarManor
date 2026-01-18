@@ -3,12 +3,8 @@ import java.util.LinkedList;
 
 public class ListTester {
     public static void main(String[] args) {
-        List a = new List();
-        a.addFirst('a');
-        a.addFirst('b');
-        a.addFirst('c');
-        System.out.println(a.toString());
-      /*   String methodName = args[0];
+
+        String methodName = args[0];
         boolean result = false;
         switch (methodName) {
             case "addFirst":
@@ -42,7 +38,7 @@ public class ListTester {
                 break;
         }
 
-        System.out.println("Test " + methodName + " result: " + (result ? "PASSED" : "FAILED"));*/
+        System.out.println("Test " + methodName + " result: " + (result ? "PASSED" : "FAILED"));
     }
 
     public static boolean testAddFirst() {
