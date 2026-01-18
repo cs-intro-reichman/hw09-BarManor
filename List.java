@@ -50,7 +50,7 @@ public class List {
     String res = "(";
 
     for (Node current = first; current != null; current = current.next) {
-        res = res + "(" + current.cp.toString() + ")";
+        res = res + current.cp.toString();
         if (current.next != null) {
              res = res + " ";
         }
